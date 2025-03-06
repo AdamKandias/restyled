@@ -1820,13 +1820,13 @@ button.mfp-close {
 }
 
 .filter-link:hover {
-  color: #6c7ae0;
-  border-bottom: 1px solid #6c7ae0;
+  color: #FF6455;
+  border-bottom: 1px solid #FF6455;
 }
 
 .filter-link-active {
-  color: #6c7ae0;
-  border-bottom: 1px solid #6c7ae0;
+  color: #FF6455;
+  border-bottom: 1px solid #FF6455;
 }
 
 @media (max-width: 767px) {

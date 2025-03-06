@@ -62,7 +62,7 @@ class NavbarComponent extends LitElement {
                                         <a href="product.html">Shop</a>
                                     </li>
 
-                                    <li class="label1" data-label1="hot">
+                                    <li class="label1" data-label1="Baru!">
                                         <a href="shoping-cart.html">Features</a>
                                     </li>
 
