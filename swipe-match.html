@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Match</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #20c997;
+            --secondary-color: #f8f9fa;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            touch-action: manipulation;
+            overscroll-behavior: none;
+        }
+
+        .header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .app-title {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .card-container {
+            height: 70vh;
+            position: relative;
+            perspective: 1000px;
+            margin: 0 auto;
+            max-width: 400px;
+        }
+
+        .card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.3s;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            cursor: grab;
+        }
+
+        .card:active {
+            cursor: grabbing;
+        }
+
+        .card-img-container {
+            height: 65%;
+            position: relative;
+            background-color: #e9ecef;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            height: 35%;
+            background-color: white;
+            padding: 15px;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: rgba(32, 201, 151, 0.2);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        .info-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .btn-dislike {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            border: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-like {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .like-indicator,
+        .dislike-indicator {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 5;
+        }
+
+        .like-indicator {
+            left: 25%;
+            transform: translate(-50%, -50%);
+            color: #28a745;
+        }
+
+        .dislike-indicator {
+            right: 25%;
+            transform: translate(50%, -50%);
+            color: #dc3545;
+        }
+
+        .product-details {
+            margin-top: 10px;
+            display: none;
+        }
+
+        .product-details.show {
+            display: block;
+        }
+
+        .footer {
+            background-color: white;
+            border-top: 1px solid #dee2e6;
+            padding: 15px 0;
+            text-align: center;
+            color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header py-3">
+        <div class="container">
+            <h1 class="app-title mb-0">Fashion Match</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-4">
+        <div class="card-container">
+            <div class="card" id="current-card">
+                <span class="featured-badge">Featured</span>
+                <div class="info-button" id="info-button">
+                    <i class="fas fa-info"></i>
+                </div>
+
+                <div class="like-indicator" id="like-indicator">
+                    <i class="fas fa-heart"></i>
+                </div>
+
+                <div class="dislike-indicator" id="dislike-indicator">
+                    <i class="fas fa-times"></i>
+                </div>
+
+                <div class="card-img-container">
+                    <img src="images/browsn.png" alt="Jaket Bomber" class="card-img">
+                </div>
+
+                <div class="card-body">
+                    <h2 class="h5 fw-bold">Jaket Bomber</h2>
+                    <p class="text-muted mb-2">Classic bomber jacket with ribbed cuffs and hem. Perfect for casual
+                        outings...</p>
+
+                    <div class="product-details" id="product-details">
+                        <p class="mb-1"><span class="fw-medium">Price:</span> $89.99</p>
+                        <p class="mb-1"><span class="fw-medium">Size:</span> M</p>
+                        <p class="mb-1"><span class="fw-medium">Color:</span> Brown</p>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn-dislike" id="dislike-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <button class="btn-like" id="like-btn">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">Swipe right to like, left to dislike</p>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+        const clothingItems = [
+            {
+                id: 1,
+                name: "Jaket Bomber",
+                image: "images/browsn.png",
+                description: "Classic bomber jacket with ribbed cuffs and hem. Perfect for casual outings and cool weather.",
+                price: "$89.99",
+                size: "M",
+                color: "Brown"
+            },
+            {
+                id: 2,
+                name: "Denim Jacket",
+                image: "images/browsn.png",
+                description: "Vintage-inspired denim jacket with distressed details. A wardrobe essential.",
+                price: "$79.99",
+                size: "L",
+                color: "Blue"
+            },
+            {
+                id: 3,
+                name: "Leather Jacket",
+                image: "images/browsn.png",
+                description: "Premium leather jacket with quilted lining. Timeless style with modern details.",
+                price: "$149.99",
+                size: "M",
+                color: "Black"
+            },
+            {
+                id: 4,
+                name: "Puffer Jacket",
+                image: "images/browsn.png",
+                description: "Lightweight puffer jacket with water-resistant finish. Keeps you warm without the bulk.",
+                price: "$99.99",
+                size: "S",
+                color: "Red"
+            }
+        ];
+
+        // Current item index
+        let currentIndex = 0;
+
+
+        const cardElement = document.getElementById('current-card');
+        const likeIndicator = document.getElementById('like-indicator');
+        const dislikeIndicator = document.getElementById('dislike-indicator');
+        const likeBtn = document.getElementById('like-btn');
+        const dislikeBtn = document.getElementById('dislike-btn');
+        const infoBtn = document.getElementById('info-button');
+        const productDetails = document.getElementById('product-details');
+
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        updateCard();
+
+        // Event listeners for touch/mouse events
+        cardElement.addEventListener('mousedown', handleStart);
+        cardElement.addEventListener('mousemove', handleMove);
+        cardElement.addEventListener('mouseup', handleEnd);
+        cardElement.addEventListener('mouseleave', handleEnd);
+
+        cardElement.addEventListener('touchstart', handleStart);
+        cardElement.addEventListener('touchmove', handleMove);
+        cardElement.addEventListener('touchend', handleEnd);
+
+        // Button event listeners
+        likeBtn.addEventListener('click', handleLike);
+        dislikeBtn.addEventListener('click', handleDislike);
+        infoBtn.addEventListener('click', toggleDetails);
+
+
+        function handleStart(e) {
+            isDragging = true;
+            startX = (e.type === 'touchstart') ? e.touches[0].clientX : e.clientX;
+        }
+
+        function handleMove(e) {
+            if (!isDragging) return;
+
+            e.preventDefault();
+            currentX = (e.type === 'touchmove') ? e.touches[0].clientX : e.clientX;
+
+            const diffX = currentX - startX;
+
+
+            cardElement.style.transform = `translateX(${diffX}px) rotate(${diffX * 0.05}deg)`;
+
+
+            if (diffX > 0) {
+                likeIndicator.style.opacity = Math.min(diffX / 100, 1);
+                dislikeIndicator.style.opacity = 0;
+            } else if (diffX < 0) {
+                dislikeIndicator.style.opacity = Math.min(Math.abs(diffX) / 100, 1);
+                likeIndicator.style.opacity = 0;
+            } else {
+                likeIndicator.style.opacity = 0;
+                dislikeIndicator.style.opacity = 0;
+            }
+        }
+
+        function handleEnd() {
+            if (!isDragging) return;
+
+            isDragging = false;
+
+            const diffX = currentX - startX;
+            const threshold = 100;
+
+            if (diffX > threshold) {
+
+                handleLike();
+            } else if (diffX < -threshold) {
+
+                handleDislike();
+            } else {
+                cardElement.style.transform = 'translateX(0) rotate(0)';
+                likeIndicator.style.opacity = 0;
+                dislikeIndicator.style.opacity = 0;
+            }
+        }
+        function handleLike() {
+            cardElement.style.transform = 'translateX(1000px) rotate(30deg)';
+
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % clothingItems.length;
+                updateCard();
+            }, 300);
+        }
+
+        function handleDislike() {
+            cardElement.style.transform = 'translateX(-1000px) rotate(-30deg)';
+
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % clothingItems.length;
+                updateCard();
+            }, 300);
+        }
+
+        function toggleDetails() {
+            productDetails.classList.toggle('show');
+
+            const descriptionElement = document.querySelector('.card-body p.text-muted');
+            const currentItem = clothingItems[currentIndex];
+
+            if (productDetails.classList.contains('show')) {
+                descriptionElement.textContent = currentItem.description;
+            } else {
+                descriptionElement.textContent = currentItem.description.substring(0, 60) + '...';
+            }
+        }
+
+        function updateCard() {
+            const currentItem = clothingItems[currentIndex];
+            cardElement.style.transform = 'translateX(0) rotate(0)';
+            likeIndicator.style.opacity = 0;
+            dislikeIndicator.style.opacity = 0;
+            productDetails.classList.remove('show');
+            document.querySelector('.card-img').src = currentItem.image;
+            document.querySelector('.card-img').alt = currentItem.name;
+            document.querySelector('.card-body h2').textContent = currentItem.name;
+            document.querySelector('.card-body p.text-muted').textContent = currentItem.description.substring(0, 60) + '...';
+
+            // Update product details
+            const detailsHTML = `
+        <p class="mb-1"><span class="fw-medium">Price:</span> ${currentItem.price}</p>
+        <p class="mb-1"><span class="fw-medium">Size:</span> ${currentItem.size}</p>
+        <p class="mb-1"><span class="fw-medium">Color:</span> ${currentItem.color}</p>
+      `;
+            productDetails.innerHTML = detailsHTML;
+        }
+    </script>
+</body>
+
+</html>
