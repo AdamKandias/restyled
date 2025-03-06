@@ -384,6 +384,11 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   color: #ffff !important;
 }
 
+/* Color after scrolling (white) */
+.container-menu-desktop.fix-menu-desktop.scrolled-web .fa-user-circle-o {
+  color: #ffff !important;
+}
+
 .container-menu-desktop.fix-menu-desktop.scrolled-web .main-menu>li.active-menu>a {
   color: #ff6455 !important;
 }
