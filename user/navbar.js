@@ -15,7 +15,7 @@ class NavbarComponent extends LitElement {
                     <div class="top-bar">
                         <div class="content-topbar flex-sb-m h-full container">
                             <div class="left-top-bar">
-                                Free shipping for standard order over $100
+                                Gratis ongkir pembelian pertama!
                             </div>
 
                             <div class="right-top-bar flex-w h-full">
@@ -138,7 +138,7 @@ class NavbarComponent extends LitElement {
                     <ul class="topbar-mobile">
                         <li>
                             <div class="left-top-bar">
-                                Free shipping for standard order over $100
+                                Gratis ongkir pembelian pertama!
                             </div>
                         </li>
 

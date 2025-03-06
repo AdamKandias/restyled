@@ -380,12 +380,31 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 .main-menu>li>a {
   font-family: Poppins-Medium;
   font-size: 14px;
-  color: #f4f4f4;
+  color: #000;
   padding: 5px 0px;
   transition: all 0.4s;
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
+}
+
+/* Warna setelah scroll (saat fix-menu-desktop aktif) */
+.container-menu-desktop.fix-menu-desktop.scrolled-web .main-menu>li>a {
+  color: #f4f4f4 !important;
+}
+
+/* Warna setelah scroll (saat fix-menu-desktop aktif) */
+.container-menu-desktop.fix-menu-desktop.scrolled-web .wrap-icon-header.flex-w.flex-r-m {
+  color: #f4f4f4 !important;
+}
+
+/* Color after scrolling (white) */
+.container-menu-desktop.fix-menu-desktop.scrolled-web .zmdi {
+  color: #ffff !important;
+}
+
+.container-menu-desktop.fix-menu-desktop.scrolled-web .main-menu>li.active-menu>a {
+  color: #FF6455 !important;
 }
 
 .header-v3 .main-menu>li>a {
@@ -653,10 +672,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 /*---------------------------------------------*/
 .main-menu>li.active-menu>a {
-  color: #6c7ae0;
+  color: #FF6455;
 }
-
-
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 [ Header Mobile ]*/
@@ -2191,7 +2208,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .cl2 {
-  color: #333;
+  color: black;
 }
 
 .cl3 {
