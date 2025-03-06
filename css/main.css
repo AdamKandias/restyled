@@ -272,7 +272,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   background-color: transparent;
   width: 100%;
   height: 84px;
-  top: 40px;
+  /* top: 40px; */
   left: 0px;
 
   -webkit-transition: height 0.3s, background-color 0.3s;
@@ -351,14 +351,14 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   align-items: center;
 }
 
-.main-menu > li {
+.main-menu>li {
   display: block;
   position: relative;
   padding: 20px 10px 20px 0px;
   margin: 0px 4px 0px 14px;
 }
 
-.main-menu > li > a {
+.main-menu>li>a {
   font-family: Poppins-Medium;
   font-size: 14px;
   color: #000;
@@ -370,7 +370,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 /* Warna setelah scroll (saat fix-menu-desktop aktif) */
-.container-menu-desktop.fix-menu-desktop.scrolled-web .main-menu > li > a {
+.container-menu-desktop.fix-menu-desktop.scrolled-web .main-menu>li>a {
   color: #f4f4f4 !important;
 }
 
@@ -384,11 +384,11 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   color: #ffff !important;
 }
 
-.container-menu-desktop.fix-menu-desktop.scrolled-web .main-menu > li.active-menu > a {
+.container-menu-desktop.fix-menu-desktop.scrolled-web .main-menu>li.active-menu>a {
   color: #ff6455 !important;
 }
 
-.header-v3 .main-menu > li > a {
+.header-v3 .main-menu>li>a {
   color: #fff;
 }
 
@@ -427,7 +427,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   -moz-transition: all 0.4s;
 }
 
-.main-menu > li > .sub-menu {
+.main-menu>li>.sub-menu {
   top: 100%;
   left: 0;
 }
@@ -449,17 +449,17 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 /*---------------------------------------------*/
-.main-menu > li:hover > a {
+.main-menu>li:hover>a {
   text-decoration: none;
   color: #6c7ae0;
 }
 
-.main-menu > li:hover > .sub-menu {
+.main-menu>li:hover>.sub-menu {
   visibility: visible;
   opacity: 1;
 }
 
-.sub-menu li:hover > .sub-menu {
+.sub-menu li:hover>.sub-menu {
   visibility: visible;
   opacity: 1;
 }
@@ -468,18 +468,18 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   background-color: transparent;
 }
 
-.sub-menu > li:hover > a {
+.sub-menu>li:hover>a {
   color: #6c7ae0;
   text-decoration: none;
 }
 
 @media (max-width: 1300px) {
-  .main-menu > .respon-sub-menu .sub-menu {
+  .main-menu>.respon-sub-menu .sub-menu {
     right: 100%;
     left: auto;
   }
 
-  .main-menu > .respon-sub-menu > .sub-menu {
+  .main-menu>.respon-sub-menu>.sub-menu {
     right: 0px;
     left: auto;
   }
@@ -593,6 +593,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 /*---------------------------------------------*/
 @media (max-width: 767px) {
+
   .wrap-search-header input,
   .wrap-search-header button {
     font-size: 30px;
@@ -604,6 +605,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 @media (max-width: 575px) {
+
   .wrap-search-header input,
   .wrap-search-header button {
     font-size: 20px;
@@ -647,7 +649,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 /*---------------------------------------------*/
-.main-menu > li.active-menu > a {
+.main-menu>li.active-menu>a {
   color: #ff6455;
 }
 
@@ -744,7 +746,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   background-color: #006e68;
 }
 
-.main-menu-m > li > a {
+.main-menu-m>li>a {
   font-family: Poppins-Medium;
   font-size: 14px;
   color: white;
@@ -752,7 +754,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   padding: 8px 20px 8px 20px;
 }
 
-.main-menu-m > li {
+.main-menu-m>li {
   color: white;
   position: relative;
 }
@@ -1165,12 +1167,12 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 .rs1-select2 .select2-container .select2-results__option[aria-selected='true'] {
-  background: #6c7ae0;
+  background: #006e68;
   color: white;
 }
 
 .rs1-select2 .select2-container .select2-results__option--highlighted[aria-selected] {
-  background: #6c7ae0;
+  background: #006e68;
   color: white;
 }
 
@@ -1790,6 +1792,7 @@ button.mfp-close {
 }
 
 @media (max-width: 767px) {
+
   .filter-col1,
   .filter-col2,
   .filter-col3,
@@ -1799,6 +1802,7 @@ button.mfp-close {
 }
 
 @media (max-width: 575px) {
+
   .filter-col1,
   .filter-col2,
   .filter-col3,
@@ -2201,6 +2205,7 @@ input.num-product::-webkit-inner-spin-button {
 .cl12 {
   color: #ccc;
 }
+
 .cl14 {
   color: #ff6455;
 }
@@ -2211,6 +2216,7 @@ input.num-product::-webkit-inner-spin-button {
   font-family: 'Nunito', sans-serif;
   font-optical-sizing: auto;
 }
+
 .stext-101 {
   font-family: Poppins-Medium;
   font-size: 15px;
@@ -3005,7 +3011,7 @@ input.num-product::-webkit-inner-spin-button {
   bottom: -2px;
 }
 
-.input1:focus + .focus-input1 {
+.input1:focus+.focus-input1 {
   width: 100%;
 }
 
