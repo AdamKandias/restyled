@@ -40,19 +40,33 @@
         $('html, body').animate({ scrollTop: 0 }, 300);
     });
 
+    $('.js-addcart-detail').each(function () {
+        var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+        $(this).on('click', function () {
+            swal(nameProduct, "Berhasil ditambahkan ke cart !", "success");
+        });
+    });
+
+    $('.js-addcart-detail').each(function () {
+        var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+        $(this).on('click', function () {
+            swal(nameProduct, "Berhasil ditambahkan ke cart !", "success");
+        });
+    });
+
+    $('.js-swap-detail').each(function () {
+        var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+        $(this).on('click', function () {
+            swal(nameProduct, "Berhasil meminta tukar pakaian !", "success");
+        });
+    });
 
     /*==================================================================
     [ Fixed Header ]*/
     var headerDesktop = $('.container-menu-desktop');
     var wrapMenu = $('.wrap-menu-desktop');
     var logo = $('.wrap-menu-desktop .logo img'); // Target the logo image
-
-    if ($('.top-bar').length > 0) {
-        var posWrapHeader = $('.top-bar').height();
-    }
-    else {
-        var posWrapHeader = 0;
-    }
+    var posWrapHeader = 0;
 
     if ($(window).scrollTop() > posWrapHeader) {
         $(headerDesktop).addClass('fix-menu-desktop scrolled-web');
