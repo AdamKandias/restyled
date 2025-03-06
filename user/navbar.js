@@ -243,7 +243,7 @@ class NavbarComponent extends LitElement {
                                     </a>
 
                                     <span class="header-cart-item-info">
-                                        1 x $19.00
+                                        1 x Rp27.000.00
                                     </span>
                                 </div>
                             </li>
@@ -259,7 +259,7 @@ class NavbarComponent extends LitElement {
                                     </a>
 
                                     <span class="header-cart-item-info">
-                                        1 x $39.00
+                                        1 x Rp54.000.00
                                     </span>
                                 </div>
                             </li>
@@ -275,7 +275,7 @@ class NavbarComponent extends LitElement {
                                     </a>
 
                                     <span class="header-cart-item-info">
-                                        1 x $17.00
+                                        1 x Rp32.000.00
                                     </span>
                                 </div>
                             </li>
