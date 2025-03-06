@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Pengguna</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .profile-header {
+            background-color: #006d5b;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+        }
+
+        .profile-container {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: -50px;
+            position: relative;
+        }
+
+        .profile-picture {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+
+        .catalog img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .catalog-item {
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="profile-header">
+        <h4>ReStyled.</h4>
+        <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown"
+                aria-expanded="false">⚙</button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Pengaturan</a>
+                <a class="dropdown-item" href="#">Keluar</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="profile-container text-center">
+            <img src="https://static-00.iconduck.com/assets.00/user-icon-470x512-joawnpv1.png" class="profile-picture"
+                alt="Profile">
+            <h4>Bunga Nabila</h4>
+            <p>@bunga123</p>
+            <p>12 Produk | 100 Match | 100 Poin</p>
+            <button class="btn btn-outline-secondary btn-sm">Edit Profil</button>
+            <button class="btn btn-outline-primary btn-sm">+ Tambah Produk</button>
+        </div>
+
+        <h5 class="mt-4">Katalog</h5>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="catalog-item">
+                    <img src="https://vchapmanstudio.com/cdn/shop/products/jolieprovencalbluefloral-8b.jpg?v=1675124845"
+                        width="300" alt="Red Coat">
+                    <h6>Red Coat</h6>
+                    <p>Rp. 100.000,00</p>
+                    <span class="badge badge-success">Jual</span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="catalog-item">
+                    <img src="https://vchapmanstudio.com/cdn/shop/products/jolieprovencalbluefloral-8b.jpg?v=1675124845"
+                        width="300" alt="Red Coat">
+                    <h6>Red Coat</h6>
+                    <p>Rp. 100.000,00</p>
+                    <span class="badge badge-success">Jual</span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="catalog-item">
+                    <img src="https://vchapmanstudio.com/cdn/shop/products/jolieprovencalbluefloral-8b.jpg?v=1675124845"
+                        width="300" alt="Red Coat">
+                    <h6>Red Coat</h6>
+                    <p>Rp. 100.000,00</p>
+                    <span class="badge badge-success">Jual</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
