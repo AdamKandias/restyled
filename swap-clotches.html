@@ -214,7 +214,7 @@
                     <!-- Menu desktop -->
                     <div class="menu-desktop">
                         <ul class="main-menu">
-                            <li class="active-menu">
+                            <li>
                                 <a href="index.html">Beranda</a>
                             </li>
 
@@ -245,11 +245,12 @@
                             data-notify="3">
                             <i class="zmdi zmdi-shopping-cart"></i>
                         </div>
-                        <a href="userprofile.html">
-                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 ">
-                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                            </div>
-                        </a>
+
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+                            <a class="cl2 hov-cl1" href="userprofile.html">
+                                <i class="fa fa-user-circle-o"></i>
+                            </a>
+                        </div>
                     </div>
                 </nav>
             </div>
@@ -273,11 +274,11 @@
                     <i class="zmdi zmdi-shopping-cart"></i>
                 </div>
 
-                <a href="userprofile.html">
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 ">
-                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                    </div>
-                </a>
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11">
+                    <a class="cl2 hov-cl1" href="userprofile.html">
+                        <i class="fa fa-user-circle-o"></i>
+                    </a>
+                </div>
             </div>
 
             <!-- Button show menu -->
@@ -469,36 +470,36 @@
             name: "Jaket Bomber",
             image: "images/browsn.png",
             description: "Classic bomber jacket with ribbed cuffs and hem. Perfect for casual outings and cool weather.",
-            price: "$89.99",
+            price: "Rp89.000",
             size: "M",
             color: "Brown"
         },
         {
             id: 2,
             name: "Denim Jacket",
-            image: "images/browsn.png",
+            image: "images/product-detail-03.jpg",
             description: "Vintage-inspired denim jacket with distressed details. A wardrobe essential.",
-            price: "$79.99",
+            price: "Rp74.000",
             size: "L",
             color: "Blue"
         },
         {
             id: 3,
             name: "Leather Jacket",
-            image: "images/browsn.png",
+            image: "images/product-03.jpg",
             description: "Premium leather jacket with quilted lining. Timeless style with modern details.",
-            price: "$149.99",
-            size: "M",
+            price: "Rp63.000",
+            size: "XL",
             color: "Black"
         },
         {
             id: 4,
             name: "Puffer Jacket",
-            image: "images/browsn.png",
+            image: "images/product-detail-01.jpg",
             description: "Lightweight puffer jacket with water-resistant finish. Keeps you warm without the bulk.",
-            price: "$99.99",
+            price: "Rp55.000",
             size: "S",
-            color: "Red"
+            color: "Blue"
         }
         ];
 
@@ -638,6 +639,7 @@
             productDetails.innerHTML = detailsHTML;
         }
     </script>
+
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="vendor/animsition/js/animsition.min.js"></script>
     <script src="vendor/bootstrap/js/popper.js"></script>
