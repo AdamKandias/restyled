@@ -35,11 +35,171 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<!--===============================================================================================-->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-		rel="stylesheet">
+	<<<<<<< HEAD <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+			rel="stylesheet">
+		=======
+		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+		<style>
+			html {
+				background: #f3f3f3;
+			}
+
+			.hero-title {
+				font-family: 'Nunito', sans-serif;
+				font-size: 3.5rem;
+				font-weight: 1000;
+				margin-bottom: 1.5rem;
+				color: #333;
+				line-height: 1.2;
+			}
+
+			.nunito {
+				font-family: 'Nunito', sans-serif;
+			}
+
+			.background-section {
+				position: relative;
+				background: url('images/textile.png') no-repeat center center;
+				background-size: cover;
+				height: 50vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			/* Overlay effect */
+			.background-section::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 110, 104, 0.6);
+				/* Overlay with 006E68 color */
+			}
+
+			.btn-match {
+				background-color: #006E68;
+				color: #fff;
+				border: none;
+				transition: background-color 0.3s ease-in-out;
+			}
+
+			.btn-match:hover {
+				background-color: #000;
+				color: #fff;
+			}
+
+
+			/* Card styling */
+			.fact-card {
+				position: relative;
+				/* Keeps text above the overlay */
+				background: rgba(255, 255, 255, 0.9);
+				padding: 30px;
+				max-width: 700px;
+				text-align: center;
+				border-radius: 15px;
+				box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+				font-weight: 900;
+			}
+
+			/* Font styling */
+			.fact-card p {
+				font-size: 1.4rem;
+				/* font-weight: 500; */
+				color: #333;
+				font-weight: 900;
+			}
+
+			.fact-card h4 {
+				font-weight: bold;
+				margin-top: 10px;
+				position: relative;
+				display: inline-block;
+			}
+
+			/* Underline effect */
+			.fact-card h4::after {
+				content: "";
+				display: block;
+				width: 50%;
+				height: 2px;
+				background: #333;
+				margin: 5px auto 0;
+			}
+
+			body {
+				background-color: #F8F8F8;
+				/* Warna latar belakang */
+				font-family: 'Nunito', sans-serif;
+			}
+
+			.feature-box {
+				display: flex;
+				align-items: center;
+				margin-bottom: 20px;
+			}
+
+			.feature-icon {
+				width: 80px;
+				height: 80px;
+				border-radius: 12px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-right: 15px;
+			}
+
+			.feature-icon.teal {
+				background-color: #006E68;
+			}
+
+			.feature-icon.red {
+				background-color: #E85D50;
+			}
+
+			.feature-text h3 {
+				margin-bottom: 5px;
+				font-weight: 900;
+			}
+
+			.feature-text p {
+				font-size: 14px;
+				margin: 0;
+				color: #444;
+			}
+
+			.logo-container {
+				display: flex;
+				justify-content: center;
+			}
+
+			.logo {
+				max-width: 250px;
+				width: 75%;
+			}
+
+			@media (max-width: 768px) {
+				.logo {
+					width: 100%;
+				}
+
+				.feature-box {
+					text-align: center;
+					flex-direction: column;
+				}
+
+				.feature-icon {
+					margin-bottom: 10px;
+				}
+			}
+		</style>
+		>>>>>>> 8497696d08a52bdcc093ea42ac64f35eec9a15bd
 </head>
 
 <body class="animsition">
@@ -99,7 +259,7 @@
 								<a href="product.html">Shop</a>
 							</li>
 
-							<li class="label1" data-label1="hot">
+							<li class="label1" data-label1="Baru!">
 								<a href="shoping-cart.html">Features</a>
 							</li>
 
@@ -343,7 +503,7 @@
 
 
 	<!-- Slider -->
-	<section class="section-slide">
+	<section class="section-slide bg0">
 		<div class="wrap-slick1">
 			<div class="slick1">
 				<div class="item-slick1" style="background-image: url(images/slide-01.jpg);">
@@ -351,20 +511,20 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Women Collection 2018
+									Koleksi Cewek 2025
 								</span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									NEW SEASON
+									Terbaru Nih!
 								</h2>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
 								<a href="product.html"
 									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now
+									Belanja Sekarang
 								</a>
 							</div>
 						</div>
@@ -376,21 +536,21 @@
 						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
 							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Men New-Season
+									Skena Keren Abis
 								</span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn"
 								data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									Jackets & Coats
+									Jaket dan Rompi
 								</h2>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
 								<a href="product.html"
 									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now
+									Beli Sekarang
 								</a>
 							</div>
 						</div>
@@ -403,21 +563,21 @@
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft"
 								data-delay="0">
 								<span class="ltext-101 cl2 respon2">
-									Men Collection 2018
+									Jaga Keberlangsungan
 								</span>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight"
 								data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									New arrivals
+									Yuk Tukar Baju!
 								</h2>
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
 								<a href="product.html"
 									class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now
+									Tukar Sekarang
 								</a>
 							</div>
 						</div>
@@ -427,6 +587,88 @@
 		</div>
 	</section>
 
+	<div class="bg0">
+		<div class="container hero-section bg0 p-t-80">
+			<div class="row align-items-center">
+				<div class="col-md-6 text-center">
+					<div class="row no-gutters">
+						<img src="images/hero.png" class="img-fluid" alt="Gambar 2">
+					</div>
+				</div>
+				<div class="col-md-6 text-black text-center text-md-left font-weight-bold">
+					<h1 class="hero-title" style="color: #222;">Tukar, Jual, Perbaiki <span class="highlight"
+							style="color: #FF6455; font-family: 'Nunito', sans-serif; font-weight: 900;">—</span><br>Beri
+						Hidup Baru
+						pada
+						Bajumu!</h1>
+					<button class="btn btn-match btn-lg py-3 px-5 w-20 w-md-auto mt-3">Cari Match!</button>
+					<button class="btn btn-outline-dark btn-lg py-3 px-5 w-20 w-md-auto mt-3 ml-md-2">Cara
+						kerjanya</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<section class="background-section nunito mt-5 bg0">
+		<div class="fact-card">
+			<p class="font-weight-bold mb-3">Pada 2020, 18,6 juta ton limbah tekstil berakhir di TPA! <br>
+				😲Rata-rata konsumen membuang 60% pakaian hanya setahun setelah dibeli.♻️</p>
+			<h4>Fibre2Fashion</h4>
+		</div>
+	</section>
+
+	<div class="container-fluid bg0 p-t-80">
+		<div class="container bg0">
+			<div class="row align-items-center">
+				<!-- Logo -->
+				<div class="col-md-4 logo-container">
+					<img src="images/icons/logo-01.png" alt="Logo" class="img-fluid logo">
+				</div>
+
+				<!-- Feature Content -->
+				<div class="col-md-4">
+					<div class="feature-box">
+						<div class="feature-icon teal">
+							<img src="images/icons/swap.png" width="40" alt="Tukar">
+						</div>
+						<div class="feature-text">
+							<h3 class="text-dark">Tukar</h3>
+							<p class="text-dark font-weight-normal">Temukan Fashion match-mu dan tukar pakaian!</p>
+						</div>
+					</div>
+					<div class="feature-box">
+						<div class="feature-icon red">
+							<img src="images/icons/sewing-machine.png" width="40" alt="Perbaiki">
+						</div>
+						<div class="feature-text">
+							<h3 class="text-dark">Perbaiki</h3>
+							<p class="text-dark font-weight-normal">Perbaiki pakaian lama agar seperti baru!</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="feature-box">
+						<div class="feature-icon red">
+							<img src="images/icons/buy.png" width="40" alt="Beli">
+						</div>
+						<div class="feature-text">
+							<h3 class="text-dark">Beli</h3>
+							<p class="text-dark font-weight-normal">Beli produk pakaian tanpa menambah limbah!</p>
+						</div>
+					</div>
+					<div class="feature-box">
+						<div class="feature-icon teal">
+							<img src="images/icons/money.png" width="40" alt="Jual">
+						</div>
+						<div class="feature-text">
+							<h3 class="text-dark">Jual</h3>
+							<p class="text-dark font-weight-normal">Jual pakaian lamamu!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- Banner -->
 	<div class="sec-banner bg0 p-t-80 p-b-50">
@@ -441,17 +683,17 @@
 							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Women
+									Cewek
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									Spring 2018
+									Lagi Trending
 								</span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
 								<div class="block1-link stext-101 cl0 trans-09">
-									Shop Now
+									Coba Belanja
 								</div>
 							</div>
 						</a>
@@ -467,17 +709,17 @@
 							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Men
+									Cowok
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									Spring 2018
+									Skena Softboy
 								</span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
 								<div class="block1-link stext-101 cl0 trans-09">
-									Shop Now
+									Coba Belanja
 								</div>
 							</div>
 						</a>
@@ -493,17 +735,17 @@
 							class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Accessories
+									Aksesoris
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									New Trend
+									Keren Abis Sih!
 								</span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
 								<div class="block1-link stext-101 cl0 trans-09">
-									Shop Now
+									Coba Belanja
 								</div>
 							</div>
 						</a>
@@ -515,38 +757,38 @@
 
 
 	<!-- Product -->
-	<section class="bg0 p-t-23 p-b-140">
+	<section class="bg0 p-t-100 p-b-140">
 		<div class="container">
 			<div class="p-b-10">
-				<h3 class="ltext-103 cl5">
-					Product Overview
+				<h3 class="ltext-103 cl5 text-center">
+					Temukan Gayamu!
 				</h3>
 			</div>
 
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						All Products
+						Semua Produk
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
-						Women
+						Cewek
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men">
-						Men
+						Cowok
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag">
-						Bag
+						Tas
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes">
-						Shoes
+						Sepatu
 					</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".watches">
-						Watches
+						Jam Tangan
 					</button>
 				</div>
 
@@ -561,7 +803,7 @@
 					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
 						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
 						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						Search
+						Cari
 					</div>
 				</div>
 
@@ -573,7 +815,7 @@
 						</button>
 
 						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product"
-							placeholder="Search">
+							placeholder="Cari Disini Ya...">
 					</div>
 				</div>
 
@@ -582,43 +824,43 @@
 					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
 						<div class="filter-col1 p-r-15 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
-								Sort By
+								Urutkan
 							</div>
 
 							<ul>
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										Default
+										Rekomendasi
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										Popularity
+										Populer
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										Average rating
+										Rating
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Newness
+										Terbaru
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										Price: Low to High
+										Harga: Rendah ke Tinggi
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										Price: High to Low
+										Harga: Tinggi ke Rendah
 									</a>
 								</li>
 							</ul>
@@ -626,43 +868,43 @@
 
 						<div class="filter-col2 p-r-15 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
-								Price
+								Harga
 							</div>
 
 							<ul>
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										All
+										Semua
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										$0.00 - $50.00
+										Rp0.00 - Rp50.000
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										$50.00 - $100.00
+										Rp50.000 - Rp100.000
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										$100.00 - $150.00
+										Rp100.000 - Rp150.000
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										$150.00 - $200.00
+										Rp150.000 - Rp200.000
 									</a>
 								</li>
 
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
-										$200.00+
+										Rp200.000
 									</a>
 								</li>
 							</ul>
@@ -670,7 +912,7 @@
 
 						<div class="filter-col3 p-r-15 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
-								Color
+								Warna
 							</div>
 
 							<ul>
@@ -680,7 +922,7 @@
 									</span>
 
 									<a href="#" class="filter-link stext-106 trans-04">
-										Black
+										Hitam
 									</a>
 								</li>
 
@@ -690,7 +932,7 @@
 									</span>
 
 									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Blue
+										Biru
 									</a>
 								</li>
 
@@ -700,7 +942,7 @@
 									</span>
 
 									<a href="#" class="filter-link stext-106 trans-04">
-										Grey
+										Abu-Abu
 									</a>
 								</li>
 
@@ -710,7 +952,7 @@
 									</span>
 
 									<a href="#" class="filter-link stext-106 trans-04">
-										Green
+										Hijau
 									</a>
 								</li>
 
@@ -720,7 +962,7 @@
 									</span>
 
 									<a href="#" class="filter-link stext-106 trans-04">
-										Red
+										Merah
 									</a>
 								</li>
 
@@ -730,7 +972,7 @@
 									</span>
 
 									<a href="#" class="filter-link stext-106 trans-04">
-										White
+										Putih
 									</a>
 								</li>
 							</ul>
@@ -738,7 +980,7 @@
 
 						<div class="filter-col4 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
-								Tags
+								Tagar
 							</div>
 
 							<div class="flex-w p-t-4 m-r--5">
@@ -1334,10 +1576,9 @@
 				</div>
 			</div>
 
-			<!-- Load more -->
 			<div class="flex-c-m flex-w w-full p-t-45">
 				<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-					Load More
+					Lebih Banyak!
 				</a>
 			</div>
 		</div>
@@ -1357,14 +1598,34 @@
 					</h4>
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="nunito cl2 hov-cl1 trans-04">
+							<<<<<<< HEAD <a href="#" class="nunito cl2 hov-cl1 trans-04">
 								About
+								=======
+								<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+									Cewek
+									>>>>>>> 8497696d08a52bdcc093ea42ac64f35eec9a15bd
+								</a>
+						</li>
+
+						<li class="p-b-10">
+							<<<<<<< HEAD <a href="#" class="nunito cl2 hov-cl1 trans-04">
+								Blog
+								=======
+								<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+									Cowok
+								</a>
+						</li>
+
+						<li class="p-b-10">
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Sepatu
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="nunito cl2 hov-cl1 trans-04">
-								Blog
+							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+								Jam Tangan
+								>>>>>>> 8497696d08a52bdcc093ea42ac64f35eec9a15bd
 							</a>
 						</li>
 					</ul>
