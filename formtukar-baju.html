@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Upload Form</title>
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .form-section {
+            background-color: #fff;
+            border: 2px dotted #6ec0e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .form-header h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        .page-indicator {
+            color: #6ec0e6;
+            font-size: 0.9rem;
+        }
+        .form-content {
+            padding-top: 10px;
+        }
+        .form-group label {
+            font-weight: 500;
+        }
+        .required:after {
+            content: "*";
+            color: red;
+        }
+        .edit-icon {
+            color: #6ec0e6;
+            margin-left: 10px;
+        }
+        .form-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        .collapsed .form-content {
+            display: none;
+        }
+        .collapsed .toggle-icon:before {
+            content: "\f054"; /* Font Awesome right arrow */
+        }
+        .toggle-icon:before {
+            content: "\f078"; /* Font Awesome down arrow */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+        }
+        /* Image Upload Styles */
+        .image-upload-container {
+            margin-bottom: 20px;
+        }
+        .image-preview-container {
+            width: 200px;
+            height: 200px;
+            border: 2px dashed #6ec0e6;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        .image-preview-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+        .image-preview-placeholder {
+            color: #6c757d;
+            text-align: center;
+            padding: 20px;
+        }
+        .image-preview-placeholder i {
+            font-size: 3rem;
+            color: #6ec0e6;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .custom-file-upload {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #6ec0e6;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .custom-file-upload:hover {
+            background-color: #5aa8cc;
+        }
+        .custom-file-upload input[type="file"] {
+            display: none;
+        }
+        .remove-image-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            display: none;
+        }
+        .image-preview-container:hover .remove-image-btn {
+            display: flex;
+        }
+        .submit-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <form id="productUploadForm" onsubmit="return validateForm()">
+        <div class="container form-container">
+            <!-- Product Details Section -->
+            <div class="form-section" id="product-details">
+                <div class="form-header" onclick="toggleSection('product-details')">
+                    <h3>Product Details</h3>
+                    <div class="d-flex align-items-center">
+                        <span class="page-indicator mr-3">Page 01 of 02</span>
+                        <i class="fas toggle-icon"></i>
+                    </div>
+                </div>
+                <div class="form-content">
+                    <!-- Image Upload Section -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group image-upload-container">
+                                <label class="required">Product Image</label>
+                                <div class="image-preview-container" id="imagePreviewContainer">
+                                    <div class="image-preview-placeholder" id="imagePlaceholder">
+                                        <i class="fas fa-camera"></i>
+                                        <p>No image selected</p>
+                                    </div>
+                                    <img id="imagePreview" style="display: none;">
+                                    <div class="remove-image-btn" onclick="removeImage()">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                                <label class="custom-file-upload">
+                                    <input type="file" id="imageUpload" accept="image/*" onchange="previewImage(this)" required>
+                                    <i class="fas fa-upload mr-2"></i> Upload Image
+                                </label>
+                                <small class="form-text text-muted">Upload a product image (JPG, PNG, or GIF)</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="required" for="productName">Product Name</label>
+                                <input type="text" class="form-control" id="productName" name="productName" placeholder="Enter product name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="required" for="productCategory">Product Category</label>
+                                <select class="form-control" id="productCategory" name="productCategory" required>
+                                    <option value="" selected disabled>-Select-</option>
+                                    <option value="electronics">Electronics</option>
+                                    <option value="clothing">Clothing</option>
+                                    <option value="home">Home & Garden</option>
+                                    <option value="books">Books</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="required" for="productPrice">Price</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </div>
+                                    <input type="number" class="form-control" id="productPrice" name="productPrice" placeholder="0.00" step="0.01" min="0" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="required" for="productDescription">Product Description</label>
+                        <textarea class="form-control" id="productDescription" name="productDescription" rows="4" placeholder="Enter product description" required></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="productBrand">Brand</label>
+                                <input type="text" class="form-control" id="productBrand" name="productBrand" placeholder="Enter brand name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="productStock">Stock Quantity</label>
+                                <input type="number" class="form-control" id="productStock" name="productStock" placeholder="Enter stock quantity" min="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Specifications Section -->
+            <div class="form-section" id="product-specifications">
+                <div class="form-header" onclick="toggleSection('product-specifications')">
+                    <h3>Product Specifications <i class="fas fa-pen edit-icon"></i></h3>
+                    <div class="d-flex align-items-center">
+                        <span class="page-indicator mr-3">Page 02 of 02</span>
+                        <i class="fas toggle-icon"></i>
+                    </div>
+                </div>
+                <div class="form-content">
+                    <p class="form-description">Please enter additional product specifications here</p>
+                    
+                    <div id="specifications-container">
+                        <!-- Specification fields will be added here dynamically -->
+                    </div>
+                    
+                    <!-- Add New Specification Button -->
+                    <div class="add-address-btn mb-3" onclick="addNewSpecification()">
+                        <i class="fas fa-plus"></i> Add New Specification
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center mt-4">
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-check mr-2"></i> Tukar!
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Bootstrap 4 JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script>
+        // Toggle section collapse/expand
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.classList.toggle('collapsed');
+        }
+        
+        // Add new specification field
+        function addNewSpecification() {
+            const specificationsContainer = document.getElementById('specifications-container');
+            const specCount = specificationsContainer.getElementsByClassName('specification-row').length + 1;
+            
+            const newSpecRow = document.createElement('div');
+            newSpecRow.className = 'specification-row row mb-3';
+            newSpecRow.innerHTML = `
+                <div class="col-md-5">
+                    <input type="text" class="form-control" name="specName[]" placeholder="Specification name" required>
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" name="specValue[]" placeholder="Specification value" required>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-danger btn-sm" onclick="removeSpecification(this)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+            
+            specificationsContainer.appendChild(newSpecRow);
+        }
+        
+        // Remove specification field
+        function removeSpecification(button) {
+            const specRow = button.closest('.specification-row');
+            specRow.remove();
+        }
+        
+        // Image Preview Functions
+        function previewImage(input) {
+            const imagePreview = document.getElementById('imagePreview');
+            const imagePlaceholder = document.getElementById('imagePlaceholder');
+            
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    imagePlaceholder.style.display = 'none';
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        function removeImage() {
+            const imagePreview = document.getElementById('imagePreview');
+            const imagePlaceholder = document.getElementById('imagePlaceholder');
+            const imageUpload = document.getElementById('imageUpload');
+            
+            imagePreview.src = '';
+            imagePreview.style.display = 'none';
+            imagePlaceholder.style.display = 'block';
+            imageUpload.value = '';
+        }
+
+        // Form validation
+        function validateForm() {
+            const form = document.getElementById('productUploadForm');
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+                form.classList.add('was-validated');
+                return false;
+            }
+            // If the form is valid, you can add your own logic here
+            // For example, you can collect all the data and send it to a server
+            alert('Form submitted successfully!');
+            return true;
+        }
+
+        // Initialize the form with one specification field
+        window.onload = function() {
+            addNewSpecification();
+        }
+    </script>
+</body>
+</html>
