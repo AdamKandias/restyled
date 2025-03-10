@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-color: #006d5b;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-container input {
+            border-radius: 5px;
+        }
+
+        .btn-google {
+            background: #f1f1f1;
+            color: black;
+        }
+
+        .btn-google img {
+            width: 20px;
+            margin-right: 8px;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .position-absolute {
+            position: absolute;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .nunito {
+            font-family: "Nunito", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .btn-login {
+            background-color: #006d5b;
+            color: white;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <img class="logo" src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/icons/logo-02.png"
+        alt="IMG-LOGO">
+    <div class="login-container nunito">
+        <h5 class="nunito font-weight-bold mb-5 ">Selamat Datang!</h5>
+        <form>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="form-group position-relative">
+                <input type="password" class="form-control" id="password" placeholder="Password">
+                <i class="bi bi-eye position-absolute"
+                    style="top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;"
+                    onclick="togglePassword()"></i>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="text-left mb-3">
+                    <a href="/register.html" class="text-decoration-none">Belum Punya Akun?</a>
+                </div>
+                <div class="text-right mb-3">
+                    <a href="#" class="text-decoration-none">Lupa Password?</a>
+                </div>
+            </div>
+            <a href="userprofile.html">
+                <button type="button" class="btn btn-login btn-block">Masuk</button>
+            </a>
+        </form>
+        <p class="my-3">Atau masuk dengan</p>
+        <button class="btn btn-google btn-block d-flex align-items-center justify-content-center">
+            <img src="https://storage.googleapis.com/libraries-lib-production/images/GoogleLogo-canvas-404-300px.original.png"
+                alt="Google">
+            Masuk dengan Google
+        </button>
+    </div>
+    <script>
+        function togglePassword() {
+            let passwordField = document.getElementById('password');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        }
+    </script>
+</body>
+
+</html>

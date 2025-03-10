@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Fashion Match</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/favicon.png" rel="icon"
+        type="image/png" />
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="fonts/iconic/css/material-design-iconic-font.min.css" rel="stylesheet" type="text/css">
+    <link href="fonts/linearicons-v1.0.0/icon-font.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/animate/animate.css" rel="stylesheet" type="text/css">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/animsition/css/animsition.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css">
+    <link href="vendor/slick/slick.css" rel="stylesheet" type="text/css">
+    <link href="vendor/MagnificPopup/magnific-popup.css" rel="stylesheet" type="text/css">
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" type="text/css">
+    <link href="css/util.css" rel="stylesheet" type="text/css">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #006E68;
+            --secondary-color: #F4F4F4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            background-color: #F4F4F4 !important;
+        }
+
+        body {
+            position: relative;
+            background: white;
+            touch-action: manipulation;
+            overscroll-behavior: none;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .app-title {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .card-container {
+            height: 70vh;
+            position: relative;
+            perspective: 1000px;
+            margin: 0 auto;
+            max-width: 400px;
+        }
+
+        .card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.3s;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background-color: white;
+            border: none;
+        }
+
+        #current-card {
+            position: absolute;
+            cursor: grab;
+        }
+
+        #current-card:active {
+            cursor: grabbing;
+        }
+
+        .card-img-container {
+            height: 65%;
+            position: relative;
+            background-color: #e9ecef;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-img-user {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            height: 35%;
+            background-color: white;
+            padding: 15px;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .info-button:hover {
+            transform: scale(1.1);
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .btn-dislike {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            border: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+        }
+
+        .btn-dislike:hover {
+            background-color: #f8f9fa;
+            transform: scale(1.05);
+        }
+
+        .btn-like {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s;
+        }
+
+        .btn-like:hover {
+            transform: scale(1.05);
+            background-color: #005a55;
+        }
+
+        .like-indicator,
+        .dislike-indicator {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 5;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .like-indicator {
+            left: 25%;
+            transform: translate(-50%, -50%);
+            color: #28a745;
+        }
+
+        .dislike-indicator {
+            right: 25%;
+            transform: translate(50%, -50%);
+            color: #dc3545;
+        }
+
+        .product-details {
+            margin-top: 10px;
+            display: none;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .product-details.show {
+            display: block;
+        }
+
+        .section-title {
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .center-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: white;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 15px;
+            background-color: rgba(0, 110, 104, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .center-text i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-section {
+            background-color: #fff;
+            border: 2px dotted #006d5b;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .form-header h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .page-indicator {
+            color: #006d5b;
+            font-size: 0.9rem;
+        }
+
+        .form-content {
+            padding-top: 10px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+        }
+
+        .required:after {
+            content: "*";
+            color: red;
+        }
+
+        .edit-icon {
+            color: #006d5b;
+            margin-left: 10px;
+        }
+
+        .form-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .collapsed .form-content {
+            display: none;
+        }
+
+        .collapsed .toggle-icon:before {
+            content: "\f054";
+            /* Font Awesome right arrow */
+        }
+
+        .toggle-icon:before {
+            content: "\f078";
+            /* Font Awesome down arrow */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+        }
+
+        /* Image Upload Styles */
+        .image-upload-container {
+            margin-bottom: 20px;
+        }
+
+        .image-preview-container {
+            width: 200px;
+            height: 200px;
+            border: 2px dashed #006d5b;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-preview-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        .image-preview-placeholder {
+            color: #6c757d;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .image-preview-placeholder i {
+            font-size: 3rem;
+            color: #006d5b;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .custom-file-upload {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #006d5b;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #5aa8cc;
+        }
+
+        .custom-file-upload input[type="file"] {
+            display: none;
+        }
+
+        .remove-image-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            display: none;
+        }
+
+        .image-preview-container:hover .remove-image-btn {
+            display: flex;
+        }
+
+        .submit-btn {
+            background-color: #006E68;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #006E68;
+        }
+
+        .hideen {
+            display: none;
+        }
+
+        .showen {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .card-container {
+                height: 60vh;
+                margin-bottom: 20px;
+            }
+
+            .center-text {
+                margin: 20px 0;
+            }
+        }
+
+        .hide-md {
+            height: 6.5rem !important;
+        }
+
+        @media (max-width: 991.98px) {
+            .hide-md {
+                height: 1rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <!-- Header desktop -->
+        <div class="container-menu-desktop">
+            <div class="wrap-menu-desktop">
+                <nav class="limiter-menu-desktop container">
+                    <!-- Logo desktop -->
+                    <a class="logo" href="#">
+                        <img alt="IMG-LOGO"
+                            src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/icons/logo-01.png">
+                    </a>
+
+                    <!-- Menu desktop -->
+                    <div class="menu-desktop">
+                        <ul class="main-menu">
+                            <li>
+                                <a href="index.html">Beranda</a>
+                            </li>
+
+                            <li>
+                                <a href="product.html">Belanja</a>
+                            </li>
+
+                            <li>
+                                <a href="blog.html">Artikel</a>
+                            </li>
+
+                            <li>
+                                <a href="about.html">Tentang</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Icon header -->
+                    <div class="wrap-icon-header flex-w flex-r-m">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+                            <i class="zmdi zmdi-search"></i>
+                        </div>
+
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+                            data-notify="3">
+                            <i class="zmdi zmdi-shopping-cart"></i>
+                        </div>
+
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+                            <a class="cl2 hov-cl1" href="userprofile.html">
+                                <i class="fa fa-user-circle-o"></i>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Header Mobile -->
+        <div class="wrap-header-mobile">
+            <!-- Logo moblie -->
+            <div class="logo-mobile">
+                <a href="index.html"><img alt="IMG-LOGO"
+                        src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/icons/logo-01.png"></a>
+            </div>
+
+            <!-- Icon header -->
+            <div class="wrap-icon-header flex-w flex-r-m m-r-15">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+                    <i class="zmdi zmdi-search"></i>
+                </div>
+
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 icon-header-noti js-show-cart" data-notify="3">
+                    <i class="zmdi zmdi-shopping-cart"></i>
+                </div>
+
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11">
+                    <a class="cl2 hov-cl1" href="userprofile.html">
+                        <i class="fa fa-user-circle-o"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Button show menu -->
+            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </div>
+        </div>
+
+
+        <!-- Menu Mobile -->
+        <div class="menu-mobile">
+            <ul class="main-menu-m">
+                <li>
+                    <a href="index.html">Beranda</a>
+                </li>
+
+                <li>
+                    <a href="product.html">Belanja</a>
+                </li>
+                <li>
+                    <a href="blog.html">Artikel</a>
+                </li>
+
+                <li>
+                    <a href="about.html">Tentang</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Modal Search -->
+        <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+            <div class="container-search-header">
+                <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+                    <img alt="CLOSE"
+                        src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/icons/icon-close2.png">
+                </button>
+
+                <form class="wrap-search-header flex-w p-l-15">
+                    <button class="flex-c-m trans-04">
+                        <i class="zmdi zmdi-search"></i>
+                    </button>
+                    <input class="plh3" name="search" placeholder="Cari Disini..." type="text">
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart -->
+    <div class="wrap-header-cart js-panel-cart">
+        <div class="s-full js-hide-cart"></div>
+
+        <div class="header-cart flex-col-l p-l-65 p-r-25">
+            <div class="header-cart-title flex-w flex-sb-m p-b-8">
+                <span class="mtext-103 cl2">
+                    Keranjangmu
+                </span>
+
+                <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+                    <i class="zmdi zmdi-close"></i>
+                </div>
+            </div>
+
+            <div class="header-cart-content flex-w js-pscroll">
+                <ul class="header-cart-wrapitem w-full">
+                    <li class="header-cart-item flex-w flex-t m-b-12">
+                        <div class="header-cart-item-img">
+                            <img alt="IMG"
+                                src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/item-cart-01.jpg">
+                        </div>
+
+                        <div class="header-cart-item-txt p-t-8">
+                            <a class="header-cart-item-name m-b-18 hov-cl1 trans-04" href="#">
+                                White Shirt Pleat
+                            </a>
+
+                            <span class="header-cart-item-info">
+                                1 x Rp27.000.00
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="header-cart-item flex-w flex-t m-b-12">
+                        <div class="header-cart-item-img">
+                            <img alt="IMG"
+                                src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/item-cart-02.jpg">
+                        </div>
+
+                        <div class="header-cart-item-txt p-t-8">
+                            <a class="header-cart-item-name m-b-18 hov-cl1 trans-04" href="#">
+                                Converse All Star
+                            </a>
+
+                            <span class="header-cart-item-info">
+                                1 x Rp54.000.00
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="header-cart-item flex-w flex-t m-b-12">
+                        <div class="header-cart-item-img">
+                            <img alt="IMG"
+                                src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/item-cart-03.jpg">
+                        </div>
+
+                        <div class="header-cart-item-txt p-t-8">
+                            <a class="header-cart-item-name m-b-18 hov-cl1 trans-04" href="#">
+                                Nixon Porter Leather
+                            </a>
+
+                            <span class="header-cart-item-info">
+                                1 x Rp32.000.00
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="w-full">
+                    <div class="header-cart-total w-full p-tb-40">
+                        Total: Rp113.000
+                    </div>
+
+                    <div class="header-cart-buttons flex-w w-full">
+                        <a href="shoping-cart.html"
+                            class="flex-c-m nunito cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+                            Lihat Troli
+                        </a>
+
+                        <a href="shoping-cart.html"
+                            class="flex-c-m nunito cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+                            Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container hideen" id="main-content">
+        <div class="hide-md"></div>
+        <div class="row">
+            <div class="card-container col-md-5">
+                <h2 class="cl1 font-weight-bold nunito">Pakaian kamu</h2>
+                <div class="card">
+                    <span class="featured-badge">Tukar♻️</span>
+
+                    <div class="card-img-container">
+                        <img alt="Jaket Bomber" class="card-img-user"
+                            src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/browsn.png">
+                    </div>
+
+                    <div class="card-body">
+                        <h2 class="h5 fw-bold">Jaket Bomber</h2>
+                        <p class="text-muted mb-2">Classic bomber jacket with ribbed cuffs and hem. Perfect for casual
+                            outings...</p>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="col-md-2 d-flex justify-content-center align-items-center text-center cl1 font-weight-bold my-5">
+                <div class="center-text">
+                    <i class="fa fa-exchange"></i>
+                    Cari teman tukar kamu!
+                </div>
+            </div>
+            <div class="card-container col-md-5">
+                <h2 class="cl1 font-weight-bold nunito">Pakaian teman lain</h2>
+                <div class="card pb-5 pb-md-0" id="current-card">
+                    <span class="featured-badge">Tukar♻️</span>
+                    <a href="chat-feature.html">
+                        <div class="info-button">
+                            <i class="fa fa-comment-o" aria-hidden="true"></i>
+                        </div>
+                    </a>
+
+                    <div class="like-indicator" id="like-indicator">
+                        <i class="fas fa-heart"></i>
+                    </div>
+
+                    <div class="dislike-indicator" id="dislike-indicator">
+                        <i class="fas fa-times"></i>
+                    </div>
+
+                    <div class="card-img-container">
+                        <img alt="Jaket Bomber" class="card-img"
+                            src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/browsn.png">
+                    </div>
+
+                    <div class="card-body">
+                        <h2 class="h5 fw-bold">Jaket Bomber</h2>
+                        <p class="text-muted mb-2">Classic bomber jacket with ribbed cuffs and hem. Perfect for casual
+                            outings...</p>
+
+                        <div class="product-details" id="product-details">
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="btn-dislike" id="dislike-btn">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <button class="btn-like" id="like-btn">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="hide-md"></div>
+    <form id="productUploadForm" onsubmit="return validateForm()">
+        <div class="container form-container">
+            <!-- Product Details Section -->
+            <div class="form-section" id="product-details">
+                <div class="form-header" onclick="toggleSection('product-details')">
+                    <h3>Detail Produk</h3>
+                </div>
+                <div class="form-content">
+                    <!-- Image Upload Section -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group image-upload-container">
+                                <label class="required">Gambar Produk</label>
+                                <div class="image-preview-container" id="imagePreviewContainer">
+                                    <div class="image-preview-placeholder" id="imagePlaceholder">
+                                        <i class="fas fa-camera"></i>
+                                        <p>Belum Ada Gambar</p>
+                                    </div>
+                                    <img id="imagePreview" style="display: none;">
+                                    <div class="remove-image-btn" onclick="removeImage()">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                                <label class="custom-file-upload">
+                                    <input type="file" id="imageUpload" accept="image/*" onchange="previewImage(this)"
+                                        required>
+                                    <i class="fas fa-upload mr-2"></i> Upload Gambar
+                                </label>
+                                <small class="form-text text-muted">Gambar Harus .jpg atau .png</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="required" for="productName">Nama Produk</label>
+                                <input type="text" class="form-control" id="productName" name="productName"
+                                    placeholder="Masukkan nama produk..." required>
+                            </div>
+                            <div class="form-group">
+                                <label class="required" for="productCategory">Kategori Pakaian</label>
+                                <select class="form-control" id="productCategory" name="productCategory" required>
+                                    <option value="" selected disabled>--Pilih Kategori--</option>
+                                    <option value="jaket">Jaket</option>
+                                    <option value="clothing">Topi</option>
+                                    <option value="cap">Sepatu</option>
+                                    <option value="tshirt">Baju</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="required" for="productCategory">Kondisi Pakaian</label>
+                                <select class="form-control" id="productCategory" name="productCategory" required>
+                                    <option value="" selected disabled>--Pilih Kategori--</option>
+                                    <option value="jaket">Sangat Baik - Barang baru, belum pernah dipakai, mungkin hanya
+                                        dibuka dari kemasannya.</option>
+                                    <option value="clothing">Baik - Pernah dipakai sekali atau sangat jarang digunakan,
+                                        masih berfungsi dengan baik.</option>
+                                    <option value="cap">Layak Pakai - Digunakan beberapa kali, ada sedikit tanda
+                                        pemakaian tetapi masih bisa digunakan dengan baik.</option>
+                                    <option value="tshirt">Cukup - Sudah sering dipakai, ada cacat minor seperti goresan
+                                        atau noda, tetapi masih dapat digunakan.</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="required" for="productCategory">Ukuran Pakaian</label>
+                                <select class="form-control" id="productCategory" name="productCategory" required>
+                                    <option value="" selected disabled>--Pilih Kategori--</option>
+                                    <option value="jaket">XXL</option>
+                                    <option value="clothing">XL</option>
+                                    <option value="cap">L</option>
+                                    <option value="tshirt">M</option>
+                                    <option value="tshirt">S</option>
+                                    <option value="tshirt">XS</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="required" for="productPrice">Harga</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp</span>
+                                    </div>
+                                    <input type="number" class="form-control" id="productPrice" name="productPrice"
+                                        placeholder="30000" step="0.01" min="0" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="required" for="productDescription">Deskripsi Produk</label>
+                        <textarea class="form-control" id="productDescription" name="productDescription" rows="4"
+                            placeholder="Contoh : Gamis dengan bahan katun, dipakai sekali keadaan pudar di bagian dalam"
+                            required></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="productBrand">Merek</label>
+                                <input type="text" class="form-control" id="productBrand" name="productBrand"
+                                    placeholder="Masukkan merek...">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="productStock">Stok</label>
+                                <input type="number" class="form-control" id="productStock" name="productStock"
+                                    placeholder="Masukkan stok..." min="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Submit Button -->
+            <div class="text-center mt-4">
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-check mr-2"></i> Tukar!
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Footer -->
+    <footer class="clblack p-t-75 p-b-32">
+        <div class="container">
+            <div class="row justify-content-center text-center text-md-left">
+                <div class="col-sm-6 col-lg-3 p-b-50 d-flex align-items-center justify-content-center">
+                    <img alt="IMG-LOGO"
+                        src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/icons/logo-01.png">
+                </div>
+
+                <div class="col-sm-6 col-lg-3 pb-3 pb-md-5">
+                    <h4 class="nunito cl2 pb-3 pb-md-4">
+                        Perusahaan
+                    </h4>
+                    <ul class="list-unstyled">
+                        <li class="p-b-10">
+                            <a class="nunito cl2 hov-cl1 trans-04" href="about.html">
+                                Tentang
+                            </a>
+                        </li>
+                        <li class="p-b-10">
+                            <a class="nunito cl2 hov-cl1 trans-04" href="blog.html">
+                                Artikel
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 pb-3 pb-md-5">
+                    <h4 class="nunito cl2 pb-3 pb-md-4">
+                        Bantuan
+                    </h4>
+                    <ul class="list-unstyled">
+                        <li class="p-b-10">
+                            <a class="nunito cl2 hov-cl1 trans-04" href="#">
+                                FAQ
+                            </a>
+                        </li>
+                        <li class="p-b-10">
+                            <a class="nunito cl2 hov-cl1 trans-04" href="#">
+                                Kontak
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 pb-3 pb-md-5">
+                    <h4 class="nunito cl2 pb-3 pb-md-4">
+                        Media Sosial
+                    </h4>
+                    <ul class="list-unstyled">
+                        <li class="p-b-10">
+                            <a class="fs-18 cl2 hov-cl1 trans-04 m-r-16" href="#">
+                                <i class="fa fa-facebook"></i> <span class="ml-1 small">ReStyled_Official</span>
+                            </a>
+                        </li>
+                        <li class="p-b-10">
+                            <a class="fs-18 cl2 hov-cl1 trans-04 m-r-16" href="#">
+                                <i class="fa fa-instagram"></i> <span class="ml-1 small">ReStyled_Official</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const clothingItems = [
+            {
+                id: 1,
+                name: "Denim Jacket",
+                image: "https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/product-detail-03.jpg",
+                description: "Jaket denim bergaya vintage dengan kesan klasik dan trendi. Terbuat dari bahan denim berkualitas tinggi, jaket ini dirancang untuk memberikan tampilan yang timeless dan stylish. Cocok dipadukan dengan berbagai outfit, baik untuk gaya kasual sehari-hari maupun tampilan yang lebih edgy. Dengan desain yang nyaman dan tahan lama, jaket ini menjadi pilihan sempurna bagi siapa saja yang ingin menambahkan sentuhan retro ke dalam koleksi pakaian mereka.",
+                price: "Rp74.000",
+                size: "L",
+                color: "Blue"
+            }, {
+
+                id: 2,
+                name: "Jaket Bomber",
+                image: "https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/browsn.png",
+                description: "Jaket bomber klasik dengan detail manset dan hem berbahan rib yang memberikan tampilan yang rapi dan nyaman. Didesain dengan gaya yang timeless, jaket ini sangat cocok untuk berbagai kesempatan santai, mulai dari jalan-jalan hingga hangout bersama teman. Materialnya yang ringan namun tetap hangat menjadikannya pilihan ideal untuk cuaca sejuk. Dengan potongan yang stylish dan mudah dipadukan dengan berbagai outfit, jaket ini wajib dimiliki bagi mereka yang ingin tampil modis tanpa mengorbankan kenyamanan.",
+                price: "Rp89.000",
+                size: "M",
+                color: "Brown"
+            },
+            {
+                id: 3,
+                name: "Leather Jacket",
+                image: "https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/product-03.jpg",
+                description: "Jaket kulit premium dengan lapisan quilted yang memberikan kehangatan dan kenyamanan ekstra. Didesain dengan perpaduan gaya klasik yang tak lekang oleh waktu dan sentuhan detail modern, jaket ini menciptakan tampilan yang elegan dan berkelas. Material kulit berkualitas tinggi memastikan daya tahan serta memberikan kesan mewah. Cocok dipadukan dengan berbagai outfit, baik untuk tampilan kasual maupun semi-formal. Pilihan sempurna bagi mereka yang ingin tampil stylish dengan nuansa maskulin dan eksklusif.",
+                price: "Rp63.000",
+                size: "XL",
+                color: "Black"
+            },
+            {
+                id: 4,
+                name: "Puffer Jacket",
+                image: "https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/product-detail-02.jpg",
+                description: "Jaket puffer ringan dengan lapisan tahan air yang memberikan perlindungan optimal terhadap cuaca dingin dan lembab. Didesain untuk menjaga kehangatan tanpa terasa berat atau menghambat pergerakan, jaket ini sangat nyaman dipakai sepanjang hari. Material berkualitas tinggi memastikan daya tahan dan kenyamanan maksimal, sementara potongan modern membuatnya mudah dipadukan dengan berbagai gaya. Cocok untuk aktivitas luar ruangan, perjalanan, atau sekadar tampil stylish di cuaca dingin tanpa kompromi.",
+                price: "Rp55.000",
+                size: "S",
+                color: "Blue"
+            }
+        ];
+
+        // Current item index
+        let currentIndex = 0;
+
+
+        const cardElement = document.getElementById('current-card');
+        const likeIndicator = document.getElementById('like-indicator');
+        const dislikeIndicator = document.getElementById('dislike-indicator');
+        const likeBtn = document.getElementById('like-btn');
+        const dislikeBtn = document.getElementById('dislike-btn');
+        const infoBtn = document.getElementById('info-button');
+        const productDetails = document.getElementById('product-details');
+
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        updateCard();
+
+        // Event listeners for touch/mouse events
+        cardElement.addEventListener('mousedown', handleStart);
+        cardElement.addEventListener('mousemove', handleMove);
+        cardElement.addEventListener('mouseup', handleEnd);
+        cardElement.addEventListener('mouseleave', handleEnd);
+
+        cardElement.addEventListener('touchstart', handleStart);
+        cardElement.addEventListener('touchmove', handleMove);
+        cardElement.addEventListener('touchend', handleEnd);
+
+        // Button event listeners
+        likeBtn.addEventListener('click', handleLike);
+        dislikeBtn.addEventListener('click', handleDislike);
+        infoBtn.addEventListener('click', toggleDetails);
+
+
+        function handleStart(e) {
+            isDragging = true;
+            startX = (e.type === 'touchstart') ? e.touches[0].clientX : e.clientX;
+        }
+
+        function handleMove(e) {
+            if (!isDragging) return;
+
+            e.preventDefault();
+            currentX = (e.type === 'touchmove') ? e.touches[0].clientX : e.clientX;
+
+            const diffX = currentX - startX;
+
+
+            cardElement.style.transform = `translateX(${diffX}px) rotate(${diffX * 0.05}deg)`;
+
+
+            if (diffX > 0) {
+                likeIndicator.style.opacity = Math.min(diffX / 100, 1);
+                dislikeIndicator.style.opacity = 0;
+            } else if (diffX < 0) {
+                dislikeIndicator.style.opacity = Math.min(Math.abs(diffX) / 100, 1);
+                likeIndicator.style.opacity = 0;
+            } else {
+                likeIndicator.style.opacity = 0;
+                dislikeIndicator.style.opacity = 0;
+            }
+        }
+
+        function handleEnd() {
+            if (!isDragging) return;
+
+            isDragging = false;
+
+            const diffX = currentX - startX;
+            const threshold = 100;
+
+            if (diffX > threshold) {
+
+                handleLike();
+            } else if (diffX < -threshold) {
+
+                handleDislike();
+            } else {
+                cardElement.style.transform = 'translateX(0) rotate(0)';
+                likeIndicator.style.opacity = 0;
+                dislikeIndicator.style.opacity = 0;
+            }
+        }
+
+        function handleLike() {
+            cardElement.style.transform = 'translateX(1000px) rotate(30deg)';
+
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % clothingItems.length;
+                updateCard();
+            }, 300);
+        }
+
+        function handleDislike() {
+            cardElement.style.transform = 'translateX(-1000px) rotate(-30deg)';
+
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % clothingItems.length;
+                updateCard();
+            }, 300);
+        }
+
+        function toggleDetails() {
+            productDetails.classList.toggle('show');
+
+            const descriptionElement = document.querySelector('.card-body p.text-muted');
+            const currentItem = clothingItems[currentIndex];
+
+            if (productDetails.classList.contains('show')) {
+                descriptionElement.textContent = currentItem.description;
+            } else {
+                descriptionElement.textContent = currentItem.description.substring(0, 60) + '...';
+            }
+        }
+
+        function updateCard() {
+            const currentItem = clothingItems[currentIndex];
+            cardElement.style.transform = 'translateX(0) rotate(0)';
+            likeIndicator.style.opacity = 0;
+            dislikeIndicator.style.opacity = 0;
+            productDetails.classList.remove('show');
+            document.querySelector('.card-img').src = currentItem.image;
+            document.querySelector('.card-img').alt = currentItem.name;
+            document.querySelector('.card-body h2').textContent = currentItem.name;
+            document.querySelector('.card-body p.text-muted').textContent = currentItem.description.substring(0, 60) +
+                '...';
+
+            // Update product details
+            const detailsHTML = `
+        <p class="mb-1"><span class="fw-medium">Price:</span> ${currentItem.price}</p>
+        <p class="mb-1"><span class="fw-medium">Size:</span> ${currentItem.size}</p>
+        <p class="mb-1"><span class="fw-medium">Color:</span> ${currentItem.color}</p>
+      `;
+            productDetails.innerHTML = detailsHTML;
+        }
+    </script>
+
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <script>
+        $(".js-select2").each(function () {
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="vendor/slick/slick.min.js"></script>
+    <script src="js/slick-custom.js"></script>
+    <script src="vendor/parallax100/parallax100.js"></script>
+    <script>
+        $('.parallax100').parallax100();
+    </script>
+    <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <script>
+        $('.gallery-lb').each(function () { // the containers for all your galleries
+            $(this).magnificPopup({
+                delegate: 'a', // the selector for gallery item
+                type: 'image',
+                gallery: {
+                    enabled: true
+                },
+                mainClass: 'mfp-fade'
+            });
+        });
+    </script>
+    <script src="vendor/isotope/isotope.pkgd.min.js"></script>
+    <script src="vendor/sweetalert/sweetalert.min.js"></script>
+    <script>
+        $('.js-addwish-b2').on('click', function (e) {
+            e.preventDefault();
+        });
+
+        $('.js-addwish-b2').each(function () {
+            var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+            $(this).on('click', function () {
+                swal(nameProduct, "Berhasil ditambahkan ke wishlist !", "success");
+
+                $(this).addClass('js-addedwish-b2');
+                $(this).off('click');
+            });
+        });
+
+        $('.js-addwish-detail').each(function () {
+            var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+            $(this).on('click', function () {
+                swal(nameProduct, "Berhasil ditambahkan ke wishlist !", "success");
+
+                $(this).addClass('js-addedwish-detail');
+                $(this).off('click');
+            });
+        });
+
+
+    </script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function () {
+            $(this).css('position', 'relative');
+            $(this).css('overflow', 'hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+    </script>
+    <script>
+        // Toggle section collapse/expand
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.classList.toggle('collapsed');
+        }
+
+        // Add new specification field
+        function addNewSpecification() {
+            const specificationsContainer = document.getElementById('specifications-container');
+            const specCount = specificationsContainer.getElementsByClassName('specification-row').length + 1;
+
+            const newSpecRow = document.createElement('div');
+            newSpecRow.className = 'specification-row row mb-3';
+            newSpecRow.innerHTML = `
+                <div class="col-md-5">
+                    <input type="text" class="form-control" name="specName[]" placeholder="Nama Spesifikasi" required>
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" name="specValue[]" placeholder="Spesifikasi" required>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-danger btn-sm" onclick="removeSpecification(this)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+
+            specificationsContainer.appendChild(newSpecRow);
+        }
+
+        // Remove specification field
+        function removeSpecification(button) {
+            const specRow = button.closest('.specification-row');
+            specRow.remove();
+        }
+
+        // Image Preview Functions
+        function previewImage(input) {
+            const imagePreview = document.getElementById('imagePreview');
+            const imagePlaceholder = document.getElementById('imagePlaceholder');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    imagePlaceholder.style.display = 'none';
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function removeImage() {
+            const imagePreview = document.getElementById('imagePreview');
+            const imagePlaceholder = document.getElementById('imagePlaceholder');
+            const imageUpload = document.getElementById('imageUpload');
+
+            imagePreview.src = '';
+            imagePreview.style.display = 'none';
+            imagePlaceholder.style.display = 'block';
+            imageUpload.value = '';
+        }
+
+        // Form validation
+        document.getElementById('productUploadForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const form = event.target;
+            if (!form.checkValidity()) {
+                event.stopPropagation();
+                form.classList.add('was-validated');
+                return;
+            }
+
+
+            document.getElementById('main-content').style.display = 'block';
+            form.style.display = 'none';
+        });
+
+        // Initialize the form with one specification field
+        window.onload = function () {
+            addNewSpecification();
+        }
+        const buttonSubmit = document.querySelector('.submit-btn');
+        const pageOne = document.querySelector('.page-one');
+        const pageTwo = document.querySelector('.page-two');
+        buttonSubmit.addEventListener('click', function () {
+            pageOne.style.display = 'none';
+            pageTwo.style.display = 'block';
+        });
+
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

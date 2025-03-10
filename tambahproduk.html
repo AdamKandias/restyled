@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Tambah Produk</title>
+    <link rel="icon" type="image/png"
+        href="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/icons/favicon.png" />
+    <!--===============================================================================================-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="fonts/iconic/css/material-design-iconic-font.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="fonts/linearicons-v1.0.0/icon-font.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="vendor/animate/animate.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="vendor/animsition/css/animsition.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="vendor/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="vendor/slick/slick.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="vendor/MagnificPopup/magnific-popup.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
+    <link href="css/util.css" rel="stylesheet" type="text/css">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #F4F4F4;
+        }
+
+        .box {
+            max-width: 1000px;
+            border-radius: 10px;
+        }
+
+        .photo-upload {
+            display: flex;
+            gap: 10px;
+        }
+
+        .photo-upload div {
+            width: 100px;
+            height: 100px;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .photo-upload div img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .nunito {
+            font-family: "Nunito", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .btn-login {
+            background-color: #006d5b;
+            color: white;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <!-- Header desktop -->
+        <div class="container-menu-desktop">
+            <div class="wrap-menu-desktop">
+                <nav class="limiter-menu-desktop container">
+                    <!-- Logo desktop -->
+                    <a class="logo" href="#">
+                        <img alt="IMG-LOGO"
+                            src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/icons/logo-01.png">
+                    </a>
+
+                    <!-- Menu desktop -->
+                    <div class="menu-desktop">
+                        <ul class="main-menu">
+                            <li class="active-menu">
+                                <a href="index.html">Beranda</a>
+                            </li>
+
+                            <li>
+                                <a href="product.html">Belanja</a>
+                            </li>
+
+                            <li>
+                                <a href="blog.html">Artikel</a>
+                            </li>
+
+                            <li>
+                                <a href="about.html">Tentang</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Icon header -->
+                    <div class="wrap-icon-header flex-w flex-r-m">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+                            <i class="zmdi zmdi-search"></i>
+                        </div>
+
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+                            data-notify="3">
+                            <i class="zmdi zmdi-shopping-cart"></i>
+                        </div>
+                        <a href="userprofile.html">
+                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 ">
+                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                            </div>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Header Mobile -->
+        <div class="wrap-header-mobile">
+            <!-- Logo moblie -->
+            <div class="logo-mobile">
+                <a href="index.html"><img alt="IMG-LOGO"
+                        src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/icons/logo-01.png"></a>
+            </div>
+
+            <!-- Icon header -->
+            <div class="wrap-icon-header flex-w flex-r-m m-r-15">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
+                    <i class="zmdi zmdi-search"></i>
+                </div>
+
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
+                    data-notify="3">
+                    <i class="zmdi zmdi-shopping-cart"></i>
+                </div>
+
+                <a href="userprofile.html">
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 ">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Button show menu -->
+            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </div>
+        </div>
+
+
+        <!-- Menu Mobile -->
+        <div class="menu-mobile">
+            <ul class="main-menu-m">
+                <li>
+                    <a href="index.html">Beranda</a>
+                </li>
+
+                <li>
+                    <a href="product.html">Belanja</a>
+                </li>
+                <li>
+                    <a href="blog.html">Artikel</a>
+                </li>
+
+                <li>
+                    <a href="about.html">Tentang</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Modal Search -->
+        <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+            <div class="container-search-header">
+                <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+                    <img alt="CLOSE"
+                        src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/icons/icon-close2.png">
+                </button>
+
+                <form class="wrap-search-header flex-w p-l-15">
+                    <button class="flex-c-m trans-04">
+                        <i class="zmdi zmdi-search"></i>
+                    </button>
+                    <input class="plh3" name="search" placeholder="Cari Disini..." type="text">
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart -->
+    <div class="wrap-header-cart js-panel-cart">
+        <div class="s-full js-hide-cart"></div>
+
+        <div class="header-cart flex-col-l p-l-65 p-r-25">
+            <div class="header-cart-title flex-w flex-sb-m p-b-8">
+                <span class="mtext-103 cl2">
+                    Keranjangmu
+                </span>
+
+                <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+                    <i class="zmdi zmdi-close"></i>
+                </div>
+            </div>
+
+            <div class="header-cart-content flex-w js-pscroll">
+                <ul class="header-cart-wrapitem w-full">
+                    <li class="header-cart-item flex-w flex-t m-b-12">
+                        <div class="header-cart-item-img">
+                            <img alt="IMG"
+                                src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/item-cart-01.jpg">
+                        </div>
+
+                        <div class="header-cart-item-txt p-t-8">
+                            <a class="header-cart-item-name m-b-18 hov-cl1 trans-04" href="#">
+                                White Shirt Pleat
+                            </a>
+
+                            <span class="header-cart-item-info">
+                                1 x Rp27.000.00
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="header-cart-item flex-w flex-t m-b-12">
+                        <div class="header-cart-item-img">
+                            <img alt="IMG"
+                                src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/item-cart-02.jpg">
+                        </div>
+
+                        <div class="header-cart-item-txt p-t-8">
+                            <a class="header-cart-item-name m-b-18 hov-cl1 trans-04" href="#">
+                                Converse All Star
+                            </a>
+
+                            <span class="header-cart-item-info">
+                                1 x Rp54.000.00
+                            </span>
+                        </div>
+                    </li>
+
+                    <li class="header-cart-item flex-w flex-t m-b-12">
+                        <div class="header-cart-item-img">
+                            <img alt="IMG"
+                                src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/item-cart-03.jpg">
+                        </div>
+
+                        <div class="header-cart-item-txt p-t-8">
+                            <a class="header-cart-item-name m-b-18 hov-cl1 trans-04" href="#">
+                                Nixon Porter Leather
+                            </a>
+
+                            <span class="header-cart-item-info">
+                                1 x Rp32.000.00
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="w-full">
+                    <div class="header-cart-total w-full p-tb-40">
+                        Total: Rp113.000
+                    </div>
+
+                    <div class="header-cart-buttons flex-w w-full">
+                        <a href="shoping-cart.html"
+                            class="flex-c-m nunito cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+                            Lihat Troli
+                        </a>
+
+                        <a href="shoping-cart.html"
+                            class="flex-c-m nunito cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+                            Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 100px;"></div>
+    <div class="d-flex container justify-content-center">
+        <div class=" nunito box w-100 p-3">
+            <h4 class="font-weight-bold text-center">Tambah Produk</h4>
+            <label class="font-weight-bold mt-3">Foto</label>
+            <div class="photo-upload" id="photoUpload">
+                <div onclick="uploadImage(0)">+</div>
+                <div onclick="uploadImage(1)"></div>
+                <div onclick="uploadImage(2)"></div>
+                <div onclick="uploadImage(3)"></div>
+            </div>
+            <input accept="image/*" class="hidden" id="fileInput" onchange="previewImage(event)" type="file">
+
+            <div class="form-group mt-3">
+                <label class="font-weight-bold">Nama Produk</label>
+                <input class="form-control" placeholder="Contoh : Kemeja flanel" type="text">
+            </div>
+
+            <div class="form-group">
+                <label class="font-weight-bold">Deskripsi</label>
+                <textarea class="form-control"
+                    placeholder="Contoh : Gamis dengan bahan katun, dipakai sekali keadaan pudar di bagian dalam"
+                    rows="3"></textarea>
+            </div>
+
+            <h5 class="font-weight-bold mt-3">Detail Produk</h5>
+
+            <div class="form-group">
+                <label>Tipe Transaksi</label>
+                <select class="form-control">
+                    <option>Pilih tipe transaksi</option>
+                    <option>Jual</option>
+                    <option>Perbaiki</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Ukuran</label>
+                <select class="form-control">
+                    <option>Pilih ukuran</option>
+                    <option value="jaket">XXL</option>
+                    <option value="clothing">XL</option>
+                    <option value="cap">L</option>
+                    <option value="tshirt">M</option>
+                    <option value="tshirt">S</option>
+                    <option value="tshirt">XS</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Kondisi Produk</label>
+                <select class="form-control">
+                    <option>Pilih kondisi produk</option>
+                    <option value="" selected disabled>--Pilih kondisi--</option>
+                    <option value="jaket">Sangat Baik - Barang baru, belum pernah dipakai, mungkin hanya
+                        dibuka dari kemasannya.</option>
+                    <option value="clothing">Baik - Pernah dipakai sekali atau sangat jarang digunakan,
+                        masih berfungsi dengan baik.</option>
+                    <option value="cap">Layak Pakai - Digunakan beberapa kali, ada sedikit tanda
+                        pemakaian tetapi masih bisa digunakan dengan baik.</option>
+                    <option value="tshirt">Cukup - Sudah sering dipakai, ada cacat minor seperti goresan
+                        atau noda, tetapi masih dapat digunakan.</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="font-weight-bold">Harga</label>
+                <input class="form-control" placeholder="Rp. 0,00" type="number">
+            </div>
+
+            <button class="btn btn-login btn-block">Unggah</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="clblack p-t-75 p-b-32">
+        <div class="container">
+            <div class="row justify-content-center text-center text-md-left">
+                <div class="col-sm-6 col-lg-3 p-b-50 d-flex align-items-center justify-content-center">
+                    <img alt="IMG-LOGO"
+                        src="https://raw.githubusercontent.com/AdamKandias/restyled-assets/main/icons/logo-01.png">
+                </div>
+
+                <div class="col-sm-6 col-lg-3 pb-3 pb-md-5">
+                    <h4 class="nunito cl2 pb-3 pb-md-4">
+                        Perusahaan
+                    </h4>
+                    <ul class="list-unstyled">
+                        <li class="p-b-10">
+                            <a class="nunito cl2 hov-cl1 trans-04" href="about.html">
+                                Tentang
+                            </a>
+                        </li>
+                        <li class="p-b-10">
+                            <a class="nunito cl2 hov-cl1 trans-04" href="blog.html">
+                                Artikel
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 pb-3 pb-md-5">
+                    <h4 class="nunito cl2 pb-3 pb-md-4">
+                        Bantuan
+                    </h4>
+                    <ul class="list-unstyled">
+                        <li class="p-b-10">
+                            <a class="nunito cl2 hov-cl1 trans-04" href="#">
+                                FAQ
+                            </a>
+                        </li>
+                        <li class="p-b-10">
+                            <a class="nunito cl2 hov-cl1 trans-04" href="#">
+                                Kontak
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 pb-3 pb-md-5">
+                    <h4 class="nunito cl2 pb-3 pb-md-4">
+                        Media Sosial
+                    </h4>
+                    <ul class="list-unstyled">
+                        <li class="p-b-10">
+                            <a class="fs-18 cl2 hov-cl1 trans-04 m-r-16" href="#">
+                                <i class="fa fa-facebook"></i> <span class="ml-1 small">ReStyled_Official</span>
+                            </a>
+                        </li>
+                        <li class="p-b-10">
+                            <a class="fs-18 cl2 hov-cl1 trans-04 m-r-16" href="#">
+                                <i class="fa fa-instagram"></i> <span class="ml-1 small">ReStyled_Official</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let selectedIndex = 0;
+
+        function uploadImage(index) {
+            selectedIndex = index;
+            document.getElementById('fileInput').click();
+        }
+
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.querySelectorAll('.photo-upload div')[selectedIndex].innerHTML =
+                        `<img src="${e.target.result}" alt="Foto">`;
+                    moveToNextSlot();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function moveToNextSlot() {
+            const slots = document.querySelectorAll('.photo-upload div');
+            for (let i = 0; i < slots.length; i++) {
+                if (slots[i].innerHTML.trim() === '') {
+                    slots[i].innerHTML = '+';
+                    return;
+                }
+            }
+        }
+    </script>
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script>
+        $(".js-select2").each(function () {
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/slick/slick.min.js"></script>
+    <script src="js/slick-custom.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/parallax100/parallax100.js"></script>
+    <script>
+        $('.parallax100').parallax100();
+    </script>
+    <!--===============================================================================================-->
+    <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <script>
+        $('.gallery-lb').each(function () { // the containers for all your galleries
+            $(this).magnificPopup({
+                delegate: 'a', // the selector for gallery item
+                type: 'image',
+                gallery: {
+                    enabled: true
+                },
+                mainClass: 'mfp-fade'
+            });
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="vendor/isotope/isotope.pkgd.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/sweetalert/sweetalert.min.js"></script>
+    <script>
+        $('.js-addwish-b2').on('click', function (e) {
+            e.preventDefault();
+        });
+
+        $('.js-addwish-b2').each(function () {
+            var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+            $(this).on('click', function () {
+                swal(nameProduct, "is added to wishlist !", "success");
+
+                $(this).addClass('js-addedwish-b2');
+                $(this).off('click');
+            });
+        });
+
+        $('.js-addwish-detail').each(function () {
+            var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+            $(this).on('click', function () {
+                swal(nameProduct, "is added to wishlist !", "success");
+
+                $(this).addClass('js-addedwish-detail');
+                $(this).off('click');
+            });
+        });
+
+
+
+        $('.js-addcart-detail').each(function () {
+            var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+            $(this).on('click', function () {
+                swal(nameProduct, "is added to cart !", "success");
+            });
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function () {
+            $(this).css('position', 'relative');
+            $(this).css('overflow', 'hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
